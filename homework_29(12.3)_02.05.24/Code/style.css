@@ -1,0 +1,40 @@
+html {
+    font-size: 17px;
+}
+
+body {
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    color: white;
+    overflow-x: hidden;
+    background: rgb(43, 41, 86);
+    background: linear-gradient(90deg, rgba(43, 41, 86, 1) 0%, rgba(63, 67, 124, 1) 36%, rgba(145, 132, 160, 1) 67%, rgba(148, 188, 196, 1) 100%);
+}
+
+.todo-container {
+    width: max-content;
+    background-color: white;
+    margin: 0 auto;
+}
+
+li {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+li div {
+    display: inline;
+    padding: 5px;
+}
+
+.todo-title {
+    text-align: center;
+    padding: 10px 0 20px 0;
+}
+
+.btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}
