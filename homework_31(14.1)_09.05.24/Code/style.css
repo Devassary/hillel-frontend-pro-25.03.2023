@@ -1,0 +1,117 @@
+
+body {
+    background: rgb(43, 41, 86);
+    background: linear-gradient(90deg, rgba(43, 41, 86, 1) 0%, rgba(63, 67, 124, 1) 36%, rgba(145, 132, 160, 1) 67%, rgba(148, 188, 196, 1) 100%);
+}
+
+.slider {
+    width: 900px;
+    height: 400px;
+    overflow: hidden;
+    border: 1px solid darkgrey;
+}
+
+.slider-content {
+    width: 400%;
+    height: 100%;
+    display: flex;
+    transition: all .6s ease;
+}
+
+.slide {
+    background-color: azure;
+    width: 25%;
+    display: flex;
+    padding: 10px 5px;
+}
+
+
+.slide img {
+    width: 40%;
+    height: 100%;
+}
+
+.slide-content {
+    width: 60%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.align-middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bottom-navigation {
+    position: absolute;
+    display: flex;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.side-navigation{
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.side-navigation-item:hover {
+    opacity: .6;
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all .4s ease;
+}
+
+.side-navigation-item {
+    opacity: .3;
+}
+
+.right-arrow {
+    width: 0;
+    height: 0;
+    padding-right: 5px;
+    border: 0 solid transparent;
+    border-bottom-width: 40px;
+    border-top-width: 40px;
+    border-left: 20px solid darkgrey;
+}
+
+.left-arrow {
+    width: 0;
+    height: 0;
+    padding-left: 5px;
+    border: 0 solid transparent;
+    border-bottom-width: 40px;
+    border-top-width: 40px;
+    border-right: 20px solid darkgrey;
+}
+
+
+.navigation-bottom-item {
+    width: 30px;
+    height: 4px;
+    margin: 3px;
+    background-color: darkgrey;
+    opacity: .5;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+
+.navigation-bottom-item:hover {
+    opacity: .8;
+    transform: scale(1.1);
+}
+
+.slider-radio {
+    display: none;
+}
