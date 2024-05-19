@@ -112,27 +112,27 @@ function createSliderElements(contentArr) {
 
     for (const contentElement in contentArr) {
 
-        let slideEl = createEl({type: 'div', content: '', attributes: {class: 'slide'}});
+        const slideEl = createEl({type: 'div', content: '', attributes: {class: 'slide'}});
 
         slideEl.dataset.slide = '';
         slideEl.dataset.slideId = slideIndex.toString();
 
-        let imgEl = createEl({
+        const imgEl = createEl({
             type: 'img',
             content: '',
             attributes: {class: "slide-img", src: contentArr[contentElement].image}
         });
-        let contentDivEl = createEl({
+        const contentDivEl = createEl({
             type: 'div',
             content: '',
             attributes: {class: "slide-content"}
         });
-        let contentTitleEl = createEl({
+        const contentTitleEl = createEl({
             type: 'h2',
             content: contentArr[contentElement].title,
             attributes: {class: "slide-content-title"}
         });
-        let contentTextEl = createEl({
+        const contentTextEl = createEl({
             type: 'p',
             content: contentArr[contentElement].text,
             attributes: {class: "slide-content-text"}
