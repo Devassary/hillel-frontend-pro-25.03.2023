@@ -1,3 +1,5 @@
+"use strict";
+
 function createEl({type = "div", content, attributes}) {
     const $el = document.createElement(type);
 
@@ -109,14 +111,15 @@ ToDoList.prototype.printAtHtml = function (parent) {
     parentForList.append(list);
 }
 
-function prepareArrFromLocalStorage(key) {
-    if (localStorage.key) {
-        let tasksArr = JSON.parse(localStorage.getItem(key));
+function prepareArrFromLocalStorage(keyArrName) {
+    if (localStorage.key(keyArrName)) {
+        let tasksArr = JSON.parse(localStorage.getItem(keyArrName));
 
         return tasksArr.tasks.map((elem) => {
             return new Task(elem);
         });
-    }
+    } else
+        return [];
 }
 
 const keyToDoListLocalStorage = 'todolist';
