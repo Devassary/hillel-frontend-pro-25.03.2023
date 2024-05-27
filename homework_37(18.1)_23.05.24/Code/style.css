@@ -1,0 +1,54 @@
+html {
+    font-size: 20px;
+}
+
+body {
+    margin: 0;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    color: white;
+    overflow-x: hidden;
+    background: rgb(43, 41, 86);
+    background: linear-gradient(90deg, rgba(43, 41, 86, 1) 0%, rgba(63, 67, 124, 1) 36%, rgba(145, 132, 160, 1) 67%, rgba(148, 188, 196, 1) 100%);
+}
+
+.countdown-container {
+    color: black;
+    font-size: 16px;
+    width: 300px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.title {
+    padding: 5px;
+}
+
+.input {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-minutes {
+    width: 60%;
+    font-size: 20px;
+}
+
+.btn-start {
+    width: 40%;
+    font-size: 20px;
+}
+
+.countdown-field {
+    padding: 10px;
+    color: black;
+    border: 0.1rem solid darkgrey;
+    display: flex;
+    justify-content: space-between;
+}
+
+p {
+    text-align: center;
+    width: 100%;
+}
