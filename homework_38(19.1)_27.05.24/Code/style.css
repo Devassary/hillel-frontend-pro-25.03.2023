@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+
+    font-size: 25pt;
+    font-family: "Times New Roman", Times, serif;
+
+    color: white;
+    overflow-x: hidden;
+    background: rgb(43, 41, 86);
+    background: linear-gradient(90deg, rgba(43, 41, 86, 1) 0%, rgba(63, 67, 124, 1) 36%, rgba(145, 132, 160, 1) 67%, rgba(148, 188, 196, 1) 100%);
+}
+
+.weather-widget-container {
+    color: black;
+    font-size: 14px;
+    width: 300px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.widget-container {
+    padding: 7px;
+}
+
+.title {
+    padding: 15px;
+    font-size: 25pt;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.refresh-container {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.select-location {
+    width: 60%;
+    font-size: 20px;
+}
+
+.btn-refresh {
+    width: 40%;
+    font-size: 20px;
+}
+
+
+
+
+
+
