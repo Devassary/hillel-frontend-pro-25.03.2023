@@ -23,6 +23,7 @@ function browsSync() {
         }
     });
 }
+
 async function cleanDist() {
     return clean(`${BUILD_FOLDER}**/*`, { force: true });
 }
@@ -55,11 +56,22 @@ function styles() {
         .pipe(dest(`${BUILD_FOLDER}css`));
 }
 
+// async function watcher() {
+//     watch(`${SCRIPTS_FOLDER}*.js`, scripts).on('change', browserSync.reload);
+//     watch(`${STYLES_FOLDER}*.css`, styles).on('change', browserSync.reload);
+//     watch(`${APP_FOLDER}*.html`, html).on('change', browserSync.reload);
+// }
+function reload(done) {
+    browserSync.reload();
+    done();
+}
+
 async function watcher() {
-    watch(`${SCRIPTS_FOLDER}*.js`, scripts).on('change', browserSync.reload);
-    watch(`${STYLES_FOLDER}*.css`, styles).on('change', browserSync.reload);
-    watch(`${APP_FOLDER}*.html`, html).on('change', browserSync.reload);
+    watch(`${SCRIPTS_FOLDER}*.js`, series(scripts, reload));
+    watch(`${STYLES_FOLDER}*.css`, series(styles, reload));
+    watch(`${APP_FOLDER}*.html`, series(html, reload));
+
 }
 
 exports.build = series(cleanDist, html, styles, scripts);
-exports.default = series(html, styles, scripts,  watcher, browsSync);
+exports.default = series(html, styles, scripts, watcher, browsSync);
