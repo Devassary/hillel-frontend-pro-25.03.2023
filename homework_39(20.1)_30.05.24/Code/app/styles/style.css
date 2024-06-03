@@ -12,7 +12,7 @@ body {
 
 .todo-container {
     width: max-content;
-    background-color: black;
+    background-color: white;
     margin: 0 auto;
     margin-top: 10px;
 }

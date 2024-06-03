@@ -56,10 +56,9 @@ function styles() {
 }
 
 async function watcher() {
-    watch(`${SCRIPTS_FOLDER}*.js`, scripts);
-    watch(`${STYLES_FOLDER}*.css`, styles);
-    watch(`${APP_FOLDER}*.html`, html);
-    watch(`${STYLES_FOLDER}*.css`, browserSync.reload);
+    watch(`${SCRIPTS_FOLDER}*.js`, scripts).on('change', browserSync.reload);
+    watch(`${STYLES_FOLDER}*.css`, styles).on('change', browserSync.reload);
+    watch(`${APP_FOLDER}*.html`, html).on('change', browserSync.reload);
 }
 
 exports.build = series(cleanDist, html, styles, scripts);
