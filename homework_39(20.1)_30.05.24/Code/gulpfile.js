@@ -50,13 +50,12 @@ function images() {
 
 function scripts() {
     return src([`${UTILS_FOLDER}*.js`, `${SCRIPTS_FOLDER}*.js`])
+        .pipe(concat("main.js"))
         .pipe(
             babel({
                 presets: ["@babel/preset-env"],
-                plugins: ["@babel/plugin-transform-modules-commonjs"],
             }),
         )
-        .pipe(concat("main.js"))
         .pipe(uglify())
         .pipe(rename({extname: ".min.js"}))
         .pipe(dest(`${BUILD_FOLDER}js`));
