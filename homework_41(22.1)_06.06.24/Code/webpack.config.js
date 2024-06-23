@@ -1,11 +1,11 @@
-import { dirname, resolve } from 'path';
-import { fileURLToPath } from 'url';
+import {dirname, resolve} from 'path';
+import {fileURLToPath} from 'url';
 import {plugins} from "@babel/preset-env/lib/plugins-compat-data.js";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ImageMinimizerPlugin from "image-minimizer-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -47,7 +47,7 @@ export default (env, {mode}) => {
                     test: /\.css$/,
                     exclude: /node_modules/,
                     use: [
-                        //MiniCssExtractPlugin.loader,
+                        MiniCssExtractPlugin.loader,
                         'style-loader',
                         {
                             loader: 'css-loader',
@@ -61,7 +61,7 @@ export default (env, {mode}) => {
                     test: /\.s[ac]ss$/,
                     exclude: /node_modules/,
                     use: [
-                        //MiniCssExtractPlugin.loader,
+                        MiniCssExtractPlugin.loader,
                         'style-loader',
                         {
                             loader: 'css-loader',
@@ -87,6 +87,9 @@ export default (env, {mode}) => {
             ]
         },
         plugins: [
+            new MiniCssExtractPlugin({
+                filename: '[name].css'
+            }),
             new HtmlWebpackPlugin({
                 title: "Homework 41(22.1)",
                 scriptLoading: 'defer',
@@ -96,23 +99,23 @@ export default (env, {mode}) => {
             }),
             new CopyPlugin({
                 patterns: [
-                    { from: resolve(__dirname, 'src', 'public'), to: resolve(__dirname, 'dist') },
+                    {from: resolve(__dirname, 'src', 'public'), to: resolve(__dirname, 'dist')},
                 ],
             }),
-            //new MiniCssExtractPlugin(),
         ],
         optimization: {
+            minimize: true,
             minimizer: [
                 "...",
-                //new CssMinimizerPlugin(),
+                new CssMinimizerPlugin(),
                 new ImageMinimizerPlugin({
                     minimizer: {
                         implementation: ImageMinimizerPlugin.imageminMinify,
                         options: {
                             plugins: [
-                                ["gifsicle", { interlaced: true }],
-                                ["jpegtran", { progressive: true }],
-                                ["optipng", { optimizationLevel: 5 }],
+                                ["gifsicle", {interlaced: true}],
+                                ["jpegtran", {progressive: true}],
+                                ["optipng", {optimizationLevel: 5}],
                                 ["svgo",
                                     {
                                         plugins: [
@@ -124,7 +127,7 @@ export default (env, {mode}) => {
                                                         addAttributesToSVGElement: {
                                                             params: {
                                                                 attributes: [
-                                                                    { xmlns: "http://www.w3.org/2000/svg" },
+                                                                    {xmlns: "http://www.w3.org/2000/svg"},
                                                                 ],
                                                             },
                                                         },
