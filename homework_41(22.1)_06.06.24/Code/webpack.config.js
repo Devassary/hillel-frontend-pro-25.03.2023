@@ -6,6 +6,7 @@ import ImageMinimizerPlugin from "image-minimizer-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import ESLintPlugin from 'eslint-webpack-plugin';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -48,7 +49,7 @@ export default (env, {mode}) => {
                     exclude: /node_modules/,
                     use: [
                         MiniCssExtractPlugin.loader,
-                        'style-loader',
+
                         {
                             loader: 'css-loader',
                             options: {
@@ -62,7 +63,7 @@ export default (env, {mode}) => {
                     exclude: /node_modules/,
                     use: [
                         MiniCssExtractPlugin.loader,
-                        'style-loader',
+
                         {
                             loader: 'css-loader',
                             options: {
@@ -101,6 +102,11 @@ export default (env, {mode}) => {
                 patterns: [
                     {from: resolve(__dirname, 'src', 'public'), to: resolve(__dirname, 'dist')},
                 ],
+            }),
+            new ESLintPlugin({
+                extensions: ['js'],
+                emitWarning: true,
+                emitError: true,
             }),
         ],
         optimization: {
@@ -142,6 +148,25 @@ export default (env, {mode}) => {
                     },
                 }),
             ],
+            splitChunks: {
+                chunks: 'all',
+                minSize: 20000,
+                maxSize: 70000,
+                minRemainingSize: 0,
+                minChunks: 1,
+                cacheGroups: {
+                    defaultVendors: {
+                        test: /[\\/]node_modules[\\/]/,
+                        priority: -10,
+                        reuseExistingChunk: true,
+                    },
+                    default: {
+                        minChunks: 2,
+                        priority: -20,
+                        reuseExistingChunk: true,
+                    },
+                },
+            },
         },
     }
 }
